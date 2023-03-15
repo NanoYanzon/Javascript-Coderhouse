@@ -33,8 +33,11 @@
 
 // alert("Muchas gracias por su compra!");
 
+//=============================================================
 // ================== SEGUNDA ENTREGA ====================
+//=============================================================
 
+// Declaracicón de variables
 const listaDeNombres = [
   "Gertrudis Reig Cabrera",
   "Eliana Victoria Ferrández Viana",
@@ -89,7 +92,13 @@ const listaDeNombres = [
 ];
 let listaAlumno = [];
 let i = 0;
+let g1 = [];
+let g2 = [];
+let g3 = [];
+let g4 = [];
+let g5 = [];
 
+//=============================================================
 //Constructor de personas
 class Persona {
   constructor(nombre, curso, nota, id) {
@@ -103,16 +112,17 @@ class Persona {
 // Carga info de personas recorriendo array y asocia curso y notas de forma aleatoria
 function crearPersona() {
   let nombre = listaDeNombres[i]; //Recorro array de lista de nombres
-  let curso = Math.floor(Math.random() * 4) + 1; //alumnos de 1 a 5 grado aleatorio
-  let nota = Math.floor(Math.random() * (10 - 5)) + 5; //notas de 5 a 10 aleatorio
-  let id = i;
+  let curso = Math.floor(Math.random() * 5) + 1; //alumnos de 1 a 5 grado aleatorio
+  let nota = Math.floor(Math.random() * 5.8) + 5; //notas de 5 a 10 aleatorio
+  let id = i + 1;
   //console.log( `Hola mi nombre es ${nombre}, voy a ${curso} grado, mi calificación es: ${nota}`);
 
   const alumno = new Persona(nombre, curso, nota, id);
   return alumno;
 }
 
-// Creo una onjeto persona paca cada nombre en el array listaDeNombres
+//=============================================================
+// Creo una objeto persona paca cada nombre en el array listaDeNombres
 // Muestro la lista en el HTML
 let text1 = "<ul>";
 for (i = 0; i < listaDeNombres.length; i++) {
@@ -121,7 +131,7 @@ for (i = 0; i < listaDeNombres.length; i++) {
   text1 +=
     "<li>" +
     listaAlumno[i].id.toString() +
-    "  " +
+    " _ " +
     listaAlumno[i].nombre.toString() +
     " - Grado: " +
     listaAlumno[i].curso.toString() +
@@ -130,14 +140,136 @@ for (i = 0; i < listaDeNombres.length; i++) {
     "</li>";
 }
 text1 += "</ul>";
-document.getElementById("Lista").innerHTML = text1;
+// document.getElementById("Lista").innerHTML = text1;
 
-// Cuento la cantidad de alumnos en cada curso
-let text2 = "<ul>";
+//=============================================================
+// Separo en arrays por curso que solo contengan notas
 for (let x = 0; x < listaDeNombres.length; x++) {
-  // contar si
-
-  text2 += "<li>" + " Grado 1:" + cant1 + " alumnos" + "</li>";
+  switch (listaAlumno[x].curso) {
+    case 1:
+      g1.push(listaAlumno[x].nota);
+      break;
+    case 2:
+      g2.push(listaAlumno[x].nota);
+      break;
+    case 3:
+      g3.push(listaAlumno[x].nota);
+      break;
+    case 4:
+      g4.push(listaAlumno[x].nota);
+      break;
+    case 5:
+      g5.push(listaAlumno[x].nota);
+      break;
+  }
 }
+
+//=================================================================
+// Muestro la cantidad de alumnos por curso
+let text2 = "<ul>";
+text2 +=
+  "<li>" +
+  " Grado 1: " +
+  g1.length +
+  " alumnos" +
+  "</li>" +
+  "<li>" +
+  " Grado 2: " +
+  g2.length +
+  " alumnos" +
+  "</li>" +
+  "<li>" +
+  " Grado 3: " +
+  g3.length +
+  " alumnos" +
+  "</li>" +
+  "<li>" +
+  " Grado 4: " +
+  g4.length +
+  " alumnos" +
+  "</li>" +
+  "<li>" +
+  " Grado 5: " +
+  g5.length +
+  " alumnos" +
+  "</li>";
 text2 += "</ul>";
-document.getElementById("Cant").innerHTML = text2;
+
+// document.getElementById("Cant").innerHTML = text2;
+
+//=================================================================
+//Defino funcion promedio
+function average(array) {
+  return array.reduce((a, b) => a + b) / array.length;
+}
+
+//Muestro los promedios, mínimos y máximos
+let text3 = "<ul>";
+text3 +=
+  "<li>" +
+  " Grado 1 >> Promedio: " +
+  Math.round(average(g1) * 100) / 100 +
+  " ....... Menor nota: " +
+  Math.min(...g1) +
+  " ....... Mayor nota: " +
+  Math.max(...g1) +
+  " ....... Todas las notas: " +
+  g1 +
+  "</li>" +
+  "<li>" +
+  " Grado 2 >> Promedio: " +
+  Math.round(average(g2) * 100) / 100 +
+  " ....... Menor nota: " +
+  Math.min(...g2) +
+  " ....... Mayor nota: " +
+  Math.max(...g2) +
+  " ....... Todas las notas: " +
+  g2 +
+  "</li>" +
+  "<li>" +
+  " Grado 3 >> Promedio: " +
+  Math.round(average(g3) * 100) / 100 +
+  " ....... Menor nota: " +
+  Math.min(...g3) +
+  " ....... Mayor nota: " +
+  Math.max(...g3) +
+  " ....... Todas las notas: " +
+  g3 +
+  "</li>" +
+  "<li>" +
+  " Grado 4 >> Promedio: " +
+  Math.round(average(g4) * 100) / 100 +
+  " ....... Menor nota: " +
+  Math.min(...g4) +
+  " ....... Mayor nota: " +
+  Math.max(...g4) +
+  " ....... Todas las notas: " +
+  g4 +
+  "</li>" +
+  "<li>" +
+  " Grado 5 >> Promedio: " +
+  Math.round(average(g5) * 100) / 100 +
+  " ....... Menor nota: " +
+  Math.min(...g5) +
+  " ....... Mayor nota: " +
+  Math.max(...g5) +
+  " ....... Todas las notas: " +
+  g5 +
+  "</li>";
+text3 += "</ul>";
+
+//document.getElementById("Promedio").innerHTML = text3;
+
+//=============================================================
+//Si es docente, puede ver la información, sino no.
+let verificacion = prompt("Es Ud. docente?");
+if (verificacion.toLowerCase() == "no") {
+  alert("No puede ver los registros de los alumnos, es solo para docentes.");
+  document.getElementById("Lista").innerHTML = "NO AUTORIZADO";
+  document.getElementById("Cant").innerHTML = "NO AUTORIZADO";
+  document.getElementById("Promedio").innerHTML = "NO AUTORIZADO";
+} else {
+  document.getElementById("Lista").innerHTML = text1;
+  document.getElementById("Cant").innerHTML = text2;
+  document.getElementById("Promedio").innerHTML = text3;
+}
