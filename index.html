@@ -7,34 +7,21 @@
     <title>Tablero de control</title>
   </head>
   <body>
-    <!-- Entrega 1
-      <h1>Lista de precios (kg)</h1>
-    <ul>
-      <li>Manzanas $10</li>
-      <li>Bananas $11</li>
-      <li>Peras $9</li>
-    </ul> -->
+    <h1>Lista de Alumnos</h1>
 
-    <!-- ====================================== -->
-    <!-- Entrega 2-->
+    <label for="select-año">Año:</label>
+    <select id="select-año"></select>
 
-    <h1>Indicadores de alumnos</h1>
-    <p>
-      Este programa es EXCLUSIVO PARA DOCENTES. <br />
-      genera una lista de notas y cursos aleatorios para una lista de 50 niños.
-      <br />Calcula la cantidad de niños por curso. <br />Calcula el promedio de
-      notas del curso, la nota mínima y la máxima.
-    </p>
+    <label for="select-curso">Curso:</label>
+    <select id="select-curso"></select>
 
-    <h3>Cantidad de alumnos por curso</h3>
-    <p id="Cant"></p>
+    <button type="button" id="botonLista">Lista de alumnos</button>
+    <button type="button" id="botonAlumnos">Informe de alumnos</button>
+    <button type="button" id="botonCurso">Informe del curso</button>
 
-    <h3>Notas promedio por curso</h3>
-    <p id="Promedio"></p>
+    <h2 id="titulo">Alumnos</h2>
+    <ul id="lista-alumnos"></ul>
 
-    <h3>Lista completa de alumnos</h3>
-    <p id="Lista"></p>
-
-    <script src="index.js"></script>
+    <script src="listaAlumnos.js"></script>
   </body>
 </html>
