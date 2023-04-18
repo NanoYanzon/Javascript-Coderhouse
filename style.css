@@ -1,0 +1,79 @@
+body {
+  background-color: #f7d3c8;
+}
+h1 {
+  color: #a10000;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+}
+label {
+  color: #a10000;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+select {
+  border-radius: 10px;
+  border: 2px solid #a10000;
+  padding: 0.5rem;
+  color: #a10000;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+}
+button {
+  background-color: #a10000 !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 1rem 2rem !important;
+  font-size: 1.2rem !important;
+  margin: 2rem 2rem !important;
+}
+h2 {
+  color: #a10000;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+#botonExportar {
+  background-color: green !important;
+  color: #fff !important;
+  border: none !important;
+  margin: 2rem auto;
+  display: block;
+}
+#tabla {
+  background-color: rgb(135, 129, 129) !important;
+  color: #fff !important;
+}
+
+.boton-tabla {
+  color: #fff !important;
+  border: none !important;
+  padding: 0.2rem 0.8rem !important;
+  font-size: 1rem !important;
+  margin: 0.5rem 0.5rem !important;
+}
+
+#delete {
+  background-color: #a10000 !important;
+}
+#edit {
+  background-color: rgb(8, 106, 8) !important;
+}
+#create {
+  background-color: rgb(8, 106, 8) !important;
+  padding: 0.5rem 1rem !important;
+  margin: 1.5rem 1.5rem !important;
+}
