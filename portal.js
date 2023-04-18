@@ -38,22 +38,7 @@ function iniciarEventos() {
     generatePDF();
   });
   botonSalir.addEventListener("click", () => {
-    swal({
-      title: "¿Seguro desea salir?",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((willDelete) => {
-      if (willDelete) {
-        swal("Gracias por venir!", {
-          icon: "success",
-          timer: 2000,
-        });
-        window.location.href = "index.html";
-      } else {
-        swal("Seguimos en el portal!", { icon: "success" });
-      }
-    });
+    alertaSalida();
   });
 }
 
@@ -309,6 +294,27 @@ function generatePDF() {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////// Alerta salida con sweet alert //////////////////////////////////////
+function alertaSalida() {
+  swal({
+    title: "¿Seguro desea salir?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      swal("Gracias por venir!", {
+        icon: "success",
+        timer: 2000,
+      });
+      window.location.href = "index.html";
+    } else {
+      swal("Seguimos en el portal!", { icon: "success" });
+    }
+  });
+}
+
+///////////////////////////git /////////////////////////////////////////////////////////////////////////////
 ///////////////////// ORQUESTADORA //////////////////////////////////////
 function main() {
   iniciarElementos();
