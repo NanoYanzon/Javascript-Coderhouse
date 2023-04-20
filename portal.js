@@ -6,10 +6,12 @@ let botonInforme;
 let botonCurso;
 let botonExportar;
 let botonSalir;
+let botonAgregarAlumno;
 let listaAlumnosMock = []; //Array con TODOS los objetos alumnos
 const url = "https://643dd6aa6c30feced81ad86f.mockapi.io/Students";
 let tablaAlumnos;
 let cells = document.querySelectorAll("td:nth-child(3)");
+let modalAgregarAlumno;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////INICIAR ELEMENTOS Y EVENTOS//////////////////////////////////////////
@@ -22,6 +24,8 @@ function iniciarElementos() {
   tablaAlumnos = document.getElementById("tabla");
   botonExportar = document.getElementById("botonExportar");
   botonSalir = document.getElementById("botonSalir");
+  botonAgregarAlumno = document.getElementById("btn-agregar-alumno");
+  modalAgregarAlumno = document.getElementById("modal-agregar-alumno");
 }
 
 function iniciarEventos() {
@@ -40,6 +44,9 @@ function iniciarEventos() {
   botonSalir.addEventListener("click", () => {
     alertaSalida();
   });
+  botonAgregarAlumno.addEventListener("click", () => {
+    crearAlumno();
+  });
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,7 +59,6 @@ fetch(url)
       const newAlumno = {
         id: alumno.id,
         nombre: alumno.nombre,
-        avatar: alumno.avatar,
         lengua: parseInt(alumno.lengua),
         matematica: parseInt(alumno.matematica),
         fisica: parseInt(alumno.fisica),
@@ -61,7 +67,7 @@ fetch(url)
       listaAlumnosMock.push(newAlumno); // Agregamos el nuevo objeto al array
     });
 
-    console.log(listaAlumnosMock); // Mostramos el array en la consola
+    //console.log(listaAlumnosMock); // Mostramos el array en la consola
   })
   .catch((error) => console.error(error)); // Manejamos errores en caso de que los haya
 
@@ -132,14 +138,14 @@ function mostrarAlumnos(lista) {
     row.appendChild(buttonEdit);
     tablaAlumnos.appendChild(row);
   });
-  row = document.createElement("tr");
-  let cell = document.createElement("td");
-  let buttonCreate = document.createElement("button");
-  buttonCreate.className = "btn boton-tabla ";
-  buttonCreate.id = "create";
-  buttonCreate.innerHTML = "Cargar nuevo alumno";
-  row.appendChild(buttonCreate);
-  tablaAlumnos.appendChild(row);
+  //row = document.createElement("tr");
+  //let cell = document.createElement("td");
+  //buttonCreate = document.createElement("button");
+  //buttonCreate.className = "btn-agregar-alumno ";
+  //buttonCreate.id = "create";
+  //buttonCreate.innerHTML = "Cargar nuevo alumno";
+  //row.appendChild(buttonCreate);
+  //tablaAlumnos.appendChild(row);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -311,6 +317,55 @@ function alertaSalida() {
     } else {
       swal("Seguimos en el portal!", { icon: "success" });
     }
+  });
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////// Crear un nuevo Alumno //////////////////////////////////////
+function crearAlumno() {
+  console.log("control 1");
+  const modalAgregarAlumno = document.getElementById("modal-agregar-alumno");
+  modalAgregarAlumno.style.display = "block";
+
+  // Agregar evento submit al formulario para crear un nuevo alumno
+  const formAgregarAlumno = document.getElementById("form-agregar-alumno");
+  formAgregarAlumno.addEventListener("submit", (event) => {
+    event.preventDefault(); // Evitamos que el formulario se envíe automáticamente
+
+    // Creamos un objeto con los datos del nuevo alumno
+    const nuevoAlumno = {
+      nombre: formAgregarAlumno.elements.nombre.value,
+      lengua: parseInt(formAgregarAlumno.elements.lengua.value),
+      matematica: parseInt(formAgregarAlumno.elements.matematica.value),
+      fisica: parseInt(formAgregarAlumno.elements.fisica.value),
+      historia: parseInt(formAgregarAlumno.elements.historia.value),
+    };
+
+    console.log(nuevoAlumno);
+
+    // Enviamos una petición POST al servidor con los datos del nuevo alumno
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(nuevoAlumno),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Agregamos el nuevo alumno a la lista
+        const newAlumno = {
+          id: data.id,
+          nombre: data.nombre,
+          lengua: parseInt(data.lengua),
+          matematica: parseInt(data.matematica),
+          fisica: parseInt(data.fisica),
+          historia: parseInt(data.historia),
+        };
+        console.log(newAlumno);
+        listaAlumnosMock.push(nuevoAlumno); // Agregamos el nuevo objeto al array
+        swal("Creado!", "Creaste un nuevo alumno en mockapi!", "success");
+      });
   });
 }
 

@@ -40,7 +40,66 @@
         id="tabla"
       ></table>
 
+      <!-- Modal para crear un nuevo alumno -->
       <div class="btn-group col-12 mb-4">
+        <button
+          type="button"
+          id="btn-agregar-alumno"
+          data-bs-toggle="modal"
+          data-bs-target="#modal-agregar-alumno"
+          class="btn btn-success"
+        >
+          Agregar Alumno
+        </button>
+
+        <div class="modal fade" id="modal-agregar-alumno">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div>
+                  <h2>Agregar Alumno</h2>
+                  <form id="form-agregar-alumno">
+                    <div class="mb-3">
+                      <label for="nombre">Nombre:</label>
+                      <input type="text" id="nombre" name="nombre" required />
+                    </div>
+                    <div class="mb-3">
+                      <label for="lengua">Lengua:</label>
+                      <input type="number" id="lengua" name="lengua" required />
+                    </div>
+                    <div class="mb-3">
+                      <label for="matematica">Matematica:</label>
+                      <input
+                        type="number"
+                        id="matematica"
+                        name="matematica"
+                        required
+                      />
+                    </div>
+                    <div class="mb-3">
+                      <label for="fisica">Fisica:</label>
+                      <input type="number" id="fisica" name="fisica" required />
+                    </div>
+                    <div class="mb-3">
+                      <label for="historia">Historia:</label>
+                      <input
+                        type="number"
+                        id="historia"
+                        name="historia"
+                        required
+                      />
+                    </div>
+
+                    <button type="submit" data-bs-dismiss="modal">
+                      Agregar
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <button type="button" id="botonExportar" class="btn btn-success">
           Exportar PDF
         </button>
