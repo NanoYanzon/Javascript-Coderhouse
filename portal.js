@@ -138,14 +138,6 @@ function mostrarAlumnos(lista) {
     row.appendChild(buttonEdit);
     tablaAlumnos.appendChild(row);
   });
-  //row = document.createElement("tr");
-  //let cell = document.createElement("td");
-  //buttonCreate = document.createElement("button");
-  //buttonCreate.className = "btn-agregar-alumno ";
-  //buttonCreate.id = "create";
-  //buttonCreate.innerHTML = "Cargar nuevo alumno";
-  //row.appendChild(buttonCreate);
-  //tablaAlumnos.appendChild(row);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -323,7 +315,6 @@ function alertaSalida() {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////// Crear un nuevo Alumno //////////////////////////////////////
 function crearAlumno() {
-  console.log("control 1");
   const modalAgregarAlumno = document.getElementById("modal-agregar-alumno");
   modalAgregarAlumno.style.display = "block";
 
@@ -340,8 +331,6 @@ function crearAlumno() {
       fisica: parseInt(formAgregarAlumno.elements.fisica.value),
       historia: parseInt(formAgregarAlumno.elements.historia.value),
     };
-
-    console.log(nuevoAlumno);
 
     // Enviamos una petición POST al servidor con los datos del nuevo alumno
     fetch(url, {
@@ -362,7 +351,6 @@ function crearAlumno() {
           fisica: parseInt(data.fisica),
           historia: parseInt(data.historia),
         };
-        console.log(newAlumno);
         listaAlumnosMock.push(nuevoAlumno); // Agregamos el nuevo objeto al array
         swal("Creado!", "Creaste un nuevo alumno en mockapi!", "success");
       });
